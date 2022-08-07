@@ -14,6 +14,10 @@ repositories {
     }
 }
 
+dependencies {
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:8.2.1.jre11'
+}
+
 group = 'com.andrey-kiyas.CursorHomeWorks'
 version = '1.0-SNAPSHOT'
 description = 'CursorHomeWorks'
@@ -26,20 +30,3 @@ publishing {
         }
     }
 }
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-task sayHi {
-    println 'Hi, everybody!'
-}
-
-task doFirst {
-    println 'My name is Andrey'
-}
-
-task doLast {
-    println 'Nice to see you!'
-}
-
