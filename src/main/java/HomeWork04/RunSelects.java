@@ -8,6 +8,12 @@ import java.util.List;
 
 public class RunSelects {
 
+    public static final String SQL_SELECT_01 = "USE STORE; SELECT MODEL_YEAR FROM PRODUCTS GROUP BY MODEL_YEAR ORDER BY MODEL_YEAR;";
+    public static final String SQL_SELECT_02 = "USE STORE; SELECT MODEL_YEAR, COUNT(ID) as \"QTY\" FROM PRODUCTS GROUP BY MODEL_YEAR HAVING MODEL_YEAR >= 2017 ORDER BY \"QTY\" DESC;";
+    public static final String SQL_SELECT_03 = "USE STORE; SELECT t1.\"NAME\" as \"PRODUCT_NAME\", t2.\"NAME\" as \"CATEGORY_NAME\", t1.PRICE FROM PRODUCTS as t1 JOIN CATEGORIES as t2 on t2.ID = t1.CATEGORY_ID and t2.\"NAME\" like '%Bikes%' and t1.PRICE > 6000 ORDER BY t1.PRICE DESC;";
+    public static final String SQL_SELECT_04 = "USE STORE; SELECT t1.\"NAME\" as \"PRODUCT_NAME\", t2.\"NAME\" as \"CATEGORY_NAME\", t3.\"NAME\" as \"BRAND_NAME\", t1.PRICE FROM PRODUCTS as t1 JOIN CATEGORIES as t2 on t2.ID = t1.CATEGORY_ID and (t2.\"NAME\" like '%Comfort%' or  t2.\"NAME\" like '%Mountain%') JOIN BRANDS     as t3 on t3.ID      = t1.BRAND_ID and t3.\"NAME\"  != 'Sun Bicycles' and t1.PRICE   BETWEEN 500 and 550 ORDER BY t1.PRICE DESC;";
+    public static final String SQL_SELECT_05 = "USE STORE; SELECT TOP 3 t1.\"NAME\" as \"PRODUCT_NAME\", t1.PRICE FROM PRODUCTS   as t1 ORDER BY t1.\"NAME\" DESC;";
+
     public static void main(String[] args) {
         String url = "jdbc:sqlserver://localhost:1433";
         String userName = "DN140484KAS";
@@ -17,7 +23,7 @@ public class RunSelects {
             DriverManager.registerDriver(new SQLServerDriver());
             Connection connectionSelect01 = DriverManager.getConnection(url, userName, password);
             Statement statementSelect01 = connectionSelect01.createStatement();
-            ResultSet resultSelect01 = statementSelect01.executeQuery("USE STORE; SELECT MODEL_YEAR FROM PRODUCTS GROUP BY MODEL_YEAR ORDER BY MODEL_YEAR;");
+            ResultSet resultSelect01 = statementSelect01.executeQuery(SQL_SELECT_01);
 
             List<Select01> Select01List = new LinkedList<>();
             while (resultSelect01.next()) {
@@ -37,7 +43,7 @@ public class RunSelects {
             DriverManager.registerDriver(new SQLServerDriver());
             Connection connectionSelect02 = DriverManager.getConnection(url, userName, password);
             Statement statementSelect02 = connectionSelect02.createStatement();
-            ResultSet resultSelect02 = statementSelect02.executeQuery("USE STORE; SELECT MODEL_YEAR, COUNT(ID) as \"QTY\" FROM PRODUCTS GROUP BY MODEL_YEAR HAVING MODEL_YEAR >= 2017 ORDER BY \"QTY\" DESC;");
+            ResultSet resultSelect02 = statementSelect02.executeQuery(SQL_SELECT_02);
 
             List<Select02> Select02List = new LinkedList<>();
             while (resultSelect02.next()) {
@@ -57,7 +63,7 @@ public class RunSelects {
             DriverManager.registerDriver(new SQLServerDriver());
             Connection connectionSelect03 = DriverManager.getConnection(url, userName, password);
             Statement statementSelect03 = connectionSelect03.createStatement();
-            ResultSet resultSelect03 = statementSelect03.executeQuery("USE STORE; SELECT t1.\"NAME\" as \"PRODUCT_NAME\", t2.\"NAME\" as \"CATEGORY_NAME\", t1.PRICE FROM PRODUCTS   as t1 JOIN CATEGORIES as t2 on t2.ID     = t1.CATEGORY_ID and t2.\"NAME\" like '%Bikes%' and t1.PRICE  > 6000 ORDER BY t1.PRICE DESC;");
+            ResultSet resultSelect03 = statementSelect03.executeQuery(SQL_SELECT_03);
 
             List<Select03> Select03List = new LinkedList<>();
             while (resultSelect03.next()) {
@@ -77,7 +83,7 @@ public class RunSelects {
             DriverManager.registerDriver(new SQLServerDriver());
             Connection connectionSelect04 = DriverManager.getConnection(url, userName, password);
             Statement statementSelect04 = connectionSelect04.createStatement();
-            ResultSet resultSelect04 = statementSelect04.executeQuery("USE STORE; SELECT t1.\"NAME\" as \"PRODUCT_NAME\", t2.\"NAME\" as \"CATEGORY_NAME\", t3.\"NAME\" as \"BRAND_NAME\", t1.PRICE FROM PRODUCTS   as t1 JOIN CATEGORIES as t2 on t2.ID      = t1.CATEGORY_ID and (t2.\"NAME\" like '%Comfort%' or  t2.\"NAME\" like '%Mountain%') JOIN BRANDS     as t3 on t3.ID      = t1.BRAND_ID and t3.\"NAME\"  != 'Sun Bicycles' and t1.PRICE   BETWEEN 500 and 550 ORDER BY t1.PRICE DESC;");
+            ResultSet resultSelect04 = statementSelect04.executeQuery(SQL_SELECT_04);
 
             List<Select04> Select04List = new LinkedList<>();
             while (resultSelect04.next()) {
@@ -97,7 +103,7 @@ public class RunSelects {
             DriverManager.registerDriver(new SQLServerDriver());
             Connection connectionSelect05 = DriverManager.getConnection(url, userName, password);
             Statement statementSelect05 = connectionSelect05.createStatement();
-            ResultSet resultSelect05 = statementSelect05.executeQuery("USE STORE; SELECT TOP 3 t1.\"NAME\" as \"PRODUCT_NAME\", t1.PRICE FROM PRODUCTS   as t1 ORDER BY t1.\"NAME\" DESC;");
+            ResultSet resultSelect05 = statementSelect05.executeQuery(SQL_SELECT_05);
 
             List<Select05> Select05List = new LinkedList<>();
             while (resultSelect05.next()) {
