@@ -6,7 +6,7 @@ class FireMachine implements Runnable {
 
     FireGenerator generator;
 
-    FireMachine(FireGenerator generator) {
+    public FireMachine(FireGenerator generator) {
         this.generator = generator;
     }
 

@@ -3,7 +3,7 @@ package HomeWork01.EX2;
 public class Calculation {
     private int counter = 0;
 
-    public synchronized void Incr() {
+    public synchronized void incr() {
         while (counter >= 5) {
             try {
                 wait();
@@ -16,7 +16,7 @@ public class Calculation {
         notify();
     }
 
-    public synchronized void Decr() {
+    public synchronized void decr() {
         while (counter < 1) {
             try {
                 wait();

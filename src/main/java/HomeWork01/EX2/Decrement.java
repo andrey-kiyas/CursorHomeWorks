@@ -10,7 +10,7 @@ public class Decrement implements Runnable {
     @Override
     public void run() {
         for (int d = 1; d <= 5; d++) {
-            calculation.Decr();
+            calculation.decr();
         }
     }
 }

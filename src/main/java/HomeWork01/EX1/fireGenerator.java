@@ -7,7 +7,7 @@ class FireGenerator implements Runnable {
 
     public BlockingQueue<String> bq;
 
-    FireGenerator() {
+    public FireGenerator() {
         bq = new ArrayBlockingQueue<>(3);
     }
 

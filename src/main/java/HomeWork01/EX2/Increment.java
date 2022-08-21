@@ -10,7 +10,7 @@ public class Increment implements Runnable {
     @Override
     public void run() {
         for (int i = 1; i <= 5; i++) {
-            calculation.Incr();
+            calculation.incr();
         }
     }
 }
