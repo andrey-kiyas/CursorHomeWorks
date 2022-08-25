@@ -1,0 +1,5 @@
+1) implement a fire department using concurrence, i.e. there are streams waiting for a signal,
+    and when the signal is received, they go to the call
+2) producer-receiver: one stream sends data, others will receive it and process it
+3) make 5 streams, each stream should generate songs (each stream is a separate genre) and these songs
+    need to be stored somewhere so that all streams can reach them
